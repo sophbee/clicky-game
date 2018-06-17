@@ -4,8 +4,6 @@ import Title from "./components/Title";
 import Wrapper from "./components/Wrapper";
 import cakes from "./cakes.json";
 import "./App.css";
-import { Grid, Row, Col, Thumbnail } from 'react-bootstrap';
-
 
 class App extends Component {
   state = {
