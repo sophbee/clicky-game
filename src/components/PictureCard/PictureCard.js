@@ -2,7 +2,7 @@ import React from "react";
 import "./PictureCard.css";
 
 const PictureCard = props => (
-  <div className="card" onClick={() => props.changeClicked(props.id)}>
+  <div className="card" onClick={() => props.setClicked(props.id)}>
     <div className="img-container">
           <img alt={props.name} src={props.image} />
       </div>

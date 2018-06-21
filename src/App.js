@@ -9,17 +9,24 @@ class App extends Component {
   state = {
     cakes,
     currentScore: 0,
-    bestScore: 0
+    bestScore: 0,
+    clickedIds: []
   };
 
   changeClicked = id => {
 
     const cakes = this.state.cakes;
-    const cakesAlreadyClicked = cakes.filter(cake => cake.id === id);
 
-    if (cakesAlreadyClicked) {
+    const alreadyClicked = this.state.clickedIds.indexOf(id);
+
+    console.log('ac', alreadyClicked);
+    console.log('clickedids', this.state.clickedIds);
+
+    this.state.clickedIds.push(id);
+
+    if (alreadyClicked >= 0) {
       this.setState({
-        cake: this.state.cake.sort(function(x, y) {
+        cakes: cakes.sort(function(x, y) {
           return 0.5 - Math.random();
         }),
         score: 0
@@ -27,7 +34,7 @@ class App extends Component {
       alert("Oops! Game resetting...");
     } else {
       this.setState({
-        cake: this.state.cake.sort(function(x, y) {
+        cakes: cakes.sort(function(x, y) {
           return 0.5 - Math.random();
         }),
         score: this.state.score + 1
@@ -48,7 +55,7 @@ class App extends Component {
 
         {this.state.cakes.map(cake => (
           <PictureCard
-            setClicked={this.setClicked}
+            setClicked={this.changeClicked}
             key={cake.id}
             id={cake.id}
             image={cake.image}
